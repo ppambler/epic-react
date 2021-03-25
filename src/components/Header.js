@@ -1,11 +1,17 @@
-import React from 'react'
-
+import React from "react";
+import logo from "@/common/assets/logo.svg";
+import { Link } from "react-router-dom";
 function Header() {
   return (
-    <>
-      <h1>Header</h1>
-    </>
-  )
+    <div>
+      <img src={logo} alt="" />
+      <nav>
+        <Link to="/">首页</Link>
+        <Link to="/history">上传历史</Link>
+        <Link to="/about">关于我</Link>
+      </nav>
+    </div>
+  );
 }
 
-export default Header
+export default Header;
