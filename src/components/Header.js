@@ -1,5 +1,5 @@
 import React from "react";
-import LogoUrl from "@/common/assets/logo.svg";
+import LogoUrl from "../common/assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -22,6 +22,14 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
+const Login = styled.div`
+  margin-left: auto;
+  text-align: center;
+`
+const Button = styled.button`
+  margin-left: 10px;
+`
+
 function Component() {
   return (
     <Header>
@@ -37,6 +45,14 @@ function Component() {
           关于我
         </StyledLink>
       </nav>
+      <Login>
+        <Button>
+          <StyledLink to="/login">登录</StyledLink>
+        </Button>
+        <Button>
+          <StyledLink to="/register">注册</StyledLink>
+        </Button>
+      </Login>
     </Header>
   );
 }
