@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Form, Input, Button } from "antd";
+import { useStores } from "../stores";
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -31,8 +32,18 @@ const tailLayout = {
 };
 
 const Component = () => {
+  const { AuthStore } = useStores();
   const onFinish = (values) => {
     console.log("Success:", values);
+    AuthStore.setUsername(values.username);
+    AuthStore.setPassword(values.password);
+    AuthStore.register()
+      .then((res) => {
+        console.log(res, "注册成功");
+      })
+      .catch((error) => {
+        console.log(error, "注册失败");
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -76,8 +87,8 @@ const Component = () => {
               message: "请输入你的用户名！",
             },
             {
-              validator: validateUserName
-            }
+              validator: validateUserName,
+            },
           ]}
         >
           <Input />
@@ -91,8 +102,8 @@ const Component = () => {
               required: true,
               message: "请输入你的密码！",
             },
-            {min: 4, message: '密码长度不能小于4'},
-            {max: 10, message: '密码长度不能大于10'}
+            { min: 4, message: "密码长度不能小于4" },
+            { max: 10, message: "密码长度不能大于10" },
           ]}
         >
           <Input.Password />
@@ -101,7 +112,7 @@ const Component = () => {
         <Form.Item
           label="确认密码"
           name="confirmPassword"
-          rules={[{ required: true, message: "请输入密码！" },validateConfirm]}
+          rules={[{ required: true, message: "请输入密码！" }, validateConfirm]}
         >
           <Input.Password />
         </Form.Item>
