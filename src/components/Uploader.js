@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useStores } from "../stores";
-import { observer } from "mobx-react";
+import { Observer, useLocalObservable } from "mobx-react-lite";
 
 import { Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
@@ -24,7 +24,7 @@ const Image = styled.img`
   max-width: 300px;
 `;
 
-const Component = observer(() => {
+const Component = () => {
   const { ImageStore, UserStore } = useStores();
 
   const props = {
@@ -46,52 +46,110 @@ const Component = observer(() => {
     },
   };
 
+  const ref1 = useRef();
+  const ref2 = useRef();
+
+  // 使用 mobx-react-lite 定义本地数据
+  const store = useLocalObservable(() => ({
+    width: "",
+    setWidth(width) {
+      store.width = width;
+    },
+    get widthStr() {
+      return store.width ? `/w/${store.width}` : "";
+    },
+    height: "",
+    setHeight(height) {
+      store.height = height;
+    },
+    get heightStr() {
+      return store.height ? `/h/${store.height}` : "";
+    },
+    get fullStr() {
+      return (
+        ImageStore.serverFile.attributes.url.attributes.url +
+        "?imageView2/0" +
+        store.widthStr +
+        store.heightStr
+      );
+    },
+  }));
+  console.log("store：", store);
+  const bindWidthChange = () => {
+    store.setWidth(ref1.current.value);
+  };
+
+  const bindHeightChange = () => {
+    store.setHeight(ref2.current.value);
+  };
   return (
-    <div>
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">
-          Click or drag file to this area to upload
-        </p>
-        <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibit from uploading
-          company data or other band files
-        </p>
-      </Dragger>
-      {ImageStore.serverFile ? (
-        <Result>
-          <H1>上传结果</H1>
-          <dl>
-            <dt>线上地址</dt>
-            <dd>
-              <a
-                target="_blank"
-                href={ImageStore.serverFile.attributes.url.attributes.url}
-              >
-                {ImageStore.serverFile.attributes.url.attributes.url}
-              </a>
-            </dd>
-            <dt>文件名</dt>
-            <dd>{ImageStore.filename}</dd>
-            <dt>文件预览</dt>
-            <dd>
-              <Image
-                src={ImageStore.serverFile.attributes.url.attributes.url}
-                alt=""
-              />
-            </dd>
-            <dt>更多尺寸</dt>
-            <dd>
-              <input type="text" placeholder="最大宽度（可选）" />
-              <input type="text" placeholder="最大高度（可选）" />
-            </dd>
-          </dl>
-        </Result>
-      ) : null}
-    </div>
+    <Observer>
+      {() => {
+        return (
+          <div>
+            <Dragger {...props}>
+              <p className="ant-upload-drag-icon">
+                <InboxOutlined />
+              </p>
+              <p className="ant-upload-text">
+                Click or drag file to this area to upload
+              </p>
+              <p className="ant-upload-hint">
+                Support for a single or bulk upload. Strictly prohibit from
+                uploading company data or other band files
+              </p>
+            </Dragger>
+            {ImageStore.serverFile ? (
+              <Result>
+                <H1>上传结果</H1>
+                <dl>
+                  <dt>线上地址</dt>
+                  <dd>
+                    <a
+                      target="_blank"
+                      href={ImageStore.serverFile.attributes.url.attributes.url}
+                      rel="noreferrer noopener"
+                    >
+                      {ImageStore.serverFile.attributes.url.attributes.url}
+                    </a>
+                  </dd>
+                  <dt>文件名</dt>
+                  <dd>{ImageStore.filename}</dd>
+                  <dt>文件预览</dt>
+                  <dd>
+                    <Image
+                      src={ImageStore.serverFile.attributes.url.attributes.url}
+                      alt=""
+                    />
+                  </dd>
+                  <dt>更多尺寸</dt>
+                  <dd>
+                    <input
+                      type="text"
+                      onChange={bindWidthChange}
+                      ref={ref1}
+                      placeholder="最大宽度（可选）"
+                    />
+                    <input
+                      type="text"
+                      onChange={bindHeightChange}
+                      ref={ref2}
+                      placeholder="最大高度（可选）"
+                    />
+                  </dd>
+                  <dd>
+                    <a target="_blank" href={store.fullStr} rel="noreferrer noopener">
+                      {store.fullStr}
+                    </a>
+                  </dd>
+                </dl>
+              </Result>
+            ) : null}
+          </div>
+        );
+      }}
+    </Observer>
   );
-});
+};
 
 export default Component;
