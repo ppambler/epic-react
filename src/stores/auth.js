@@ -1,6 +1,8 @@
 import { makeObservable, observable, action } from "mobx";
 import {Auth} from '../models'
 import UserStore from './user'
+import ImageStore from './image'
+import {message} from "antd"
 
 window.x = UserStore
 
@@ -27,11 +29,11 @@ class AuthStore {
     const {username,password} = this.values
     return new Promise((resolve,reject)=>{
       Auth.login(username,password).then(user=>{
-        console.log('登录成功')
+        message.success('登录成功')
         UserStore.pullUser()
         resolve(user)
       }).catch(err=>{
-        console.log('登录失败')
+        message.error('登录失败')
         UserStore.resetUser()
         reject(err)
       })
@@ -39,8 +41,9 @@ class AuthStore {
   }
 
   @action logout() {
-    console.log("已注销");
+    message.success("注销成功");
     Auth.logout()
+    ImageStore.serverFile = null
     UserStore.resetUser()
   }
 
@@ -49,11 +52,11 @@ class AuthStore {
     const {username,password} = this.values
     return new Promise((resolve,reject)=>{
       Auth.register(username,password).then(user=>{
-        console.log('注册成功')
+        message.success('注册成功')
         UserStore.pullUser()
         resolve(user)
       }).catch(err=>{
-        console.log('注册失败')
+        message.error('注册失败')
         UserStore.resetUser()
         reject(err)
       })
