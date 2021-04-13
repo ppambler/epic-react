@@ -24,6 +24,17 @@ const Image = styled.img`
   max-width: 300px;
 `;
 
+const StyledInput = styled.input`
+  outline-style: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2px 4px;
+  &:focus {
+    border-color: #66afe9;
+    outline: 0;
+  }
+`;
+
 const Component = () => {
   const { ImageStore, UserStore } = useStores();
 
@@ -49,7 +60,7 @@ const Component = () => {
       }
       ImageStore.upload()
         .then((serverFile) => {
-          console.log("上传成功", serverFile)
+          console.log("上传成功", serverFile);
         })
         .catch((err) => {
           console.log("上传失败");
@@ -137,13 +148,14 @@ const Component = () => {
                   </dd>
                   <dt>更多尺寸</dt>
                   <dd>
-                    <input
+                    <StyledInput
                       type="text"
                       onChange={bindWidthChange}
                       ref={ref1}
                       placeholder="最大宽度（可选）"
                     />
-                    <input
+                    <StyledInput
+                      className="input2"
                       type="text"
                       onChange={bindHeightChange}
                       ref={ref2}
