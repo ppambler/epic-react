@@ -3,6 +3,11 @@ const CracoAntDesignPlugin = require("craco-antd");
 const path = require("path");
 
 module.exports = {
+  style: {
+    postcss: {
+      plugins: [require("tailwindcss"), require("autoprefixer")],
+    },
+  },
   babel: {
     //用来支持装饰器
     plugins: [
