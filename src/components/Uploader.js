@@ -21,7 +21,7 @@ const H1 = styled.h1`
 `;
 
 const Image = styled.img`
-  max-width: 300px;
+  max-width: 30%;
 `;
 
 const StyledInput = styled.input`
