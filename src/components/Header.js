@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Button } from "antd";
 import { useStores } from "../stores";
 import { observer } from "mobx-react";
+// import 'alpinejs'
 
 const Header = styled.header`
   display: flex;

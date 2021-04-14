@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useStores } from "../stores";
-import { Observer, useLocalObservable } from "mobx-react-lite";
+import { Observer, useLocalObservable } from "mobx-react";
 
 import { Upload, message, Spin } from "antd";
 import { InboxOutlined } from "@ant-design/icons";

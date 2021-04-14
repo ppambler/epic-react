@@ -34,7 +34,7 @@ const TitleContainer = styled.div`
 
 const InfiniteContainer = styled.div`
   height: 60vh;
-  padding: 8px 24px;
+  padding: 8px 12px 8px 0;
   overflow: auto;
   border: 1px solid #e8e8e8;
   border-radius: 4px;
