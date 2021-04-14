@@ -8,7 +8,7 @@ const Tips = styled.div`
   margin: 30px 0;
   color: #fff;
   border-radius: 4px;
-  background-color: #ffec3d;
+  background-color: #91d5ff;
 `;
 
 const Component = observer(({ children }) => {

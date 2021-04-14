@@ -35,6 +35,12 @@ const StyledInput = styled.input`
   }
 `;
 
+const UploadIconContainer = styled.p`
+  svg {
+    fill: #91d5ff;
+  }
+`
+
 const Component = () => {
   const { ImageStore, UserStore } = useStores();
 
@@ -113,9 +119,9 @@ const Component = () => {
           <div>
             <Spin tip="上传中" spinning={ImageStore.isUploading}>
               <Dragger {...props}>
-                <p className="ant-upload-drag-icon">
+                <UploadIconContainer className="ant-upload-drag-icon">
                   <InboxOutlined />
-                </p>
+                </UploadIconContainer>
                 <p className="ant-upload-text">点击或拖拽上传图片</p>
                 <p className="ant-upload-hint">
                   图片仅支持 .png/.gif/.jpg/.jpeg/.svg
