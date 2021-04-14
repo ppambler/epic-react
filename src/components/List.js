@@ -9,7 +9,6 @@ const Img = styled.img`
   width: 100px;
   height: 100px;
   object-fit: contain;
-  border: 1px solid #eee;
 `;
 
 const LinkContainer = styled.div`
@@ -34,7 +33,7 @@ const TitleContainer = styled.div`
 
 const InfiniteContainer = styled.div`
   height: 60vh;
-  padding: 8px 12px 8px 0;
+  padding: 8px 12px 8px 12px;
   overflow: auto;
   border: 1px solid #e8e8e8;
   border-radius: 4px;
