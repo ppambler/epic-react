@@ -61,7 +61,7 @@ const Uploader = {
   // 查询对应用户的图片
   find({ page = 0, limit = 10 }) {
     const query = new AV.Query("Image");
-    query.include("owner");
+    // query.include("owner");
     query.limit(limit);
     query.skip(page * limit);
     query.descending("createdAt");

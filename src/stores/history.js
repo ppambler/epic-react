@@ -18,9 +18,11 @@ class HistoryStore {
 
   @action find() {
     this.isLoading = true;
+    console.log('find...')
     Uploader.find({ page: this.page, limit: this.limit })
       .then((newList) => {
         this.append(newList);
+        console.log(newList)
         this.page++;
         if (newList.length < this.limit) {
           this.hasMore = false;

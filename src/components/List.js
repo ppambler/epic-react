@@ -59,7 +59,7 @@ const Component = observer(() => {
       console.log("卸载");
       HistoryStore.reset();
     };
-  }, []);
+  }, [HistoryStore]);
 
   return (
     <InfiniteContainer>
@@ -68,7 +68,7 @@ const Component = observer(() => {
         pageStart={0}
         loadMore={loadMore}
         hasMore={!HistoryStore.isLoading && HistoryStore.hasMore}
-        useWindow={true}
+        useWindow={false}
       >
         <List
           dataSource={HistoryStore.list}
