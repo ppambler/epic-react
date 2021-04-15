@@ -75,10 +75,10 @@ const Component = observer(() => {
   return (
     <header className={classMap.header}>
       <a
-        href="/"
         className={classMap.logoLink}
         onClick={() => {
           isHidden(true);
+          history.push("/");
         }}
       >
         <Logo className={classMap.logoImg} src={LogoUrl} alt="" />
