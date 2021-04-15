@@ -19,6 +19,7 @@ const Result = styled.div`
 const H1 = styled.h1`
   margin: 20px 0;
   text-align: center;
+  font-size: 16px;
 `;
 
 const Image = styled(Zmage)`
