@@ -52,7 +52,12 @@ dd
 #hamburger
 {
     border: 2px solid #91d5ff;
-    outline-color: #40a9ff;
+    outline: none;
+}
+
+#hamburger:focus
+{
+    border-color: #40a9ff;
 }
 
 #hamburger svg
