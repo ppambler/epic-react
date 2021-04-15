@@ -11,8 +11,12 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 10px 100px;
-  color: #fff;
-  background-color: #02101f;
+  color: black;
+  background-color: #fff;
+  nav {
+    font-size: 14px;
+    font-weight: 600;
+  }
 `;
 
 const Logo = styled.img`
@@ -21,7 +25,7 @@ const Logo = styled.img`
 
 const StyledLink = styled(NavLink)`
   margin-left: 30px;
-  color: #fff;
+  color: black;
   &.active {
     color: #91d5ff;
   }
