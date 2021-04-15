@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Header />
-      <main>
+      <main className="py-6 px-6">
         <Suspense fallback={<Loading />}>
           <Switch>
             {/*<Route path="/" exact>*/}
