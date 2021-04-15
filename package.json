@@ -21,11 +21,12 @@
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-zmage": "^0.8.5-beta.36",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build:style":"npx tailwindcss-cli@latest build src/styles/index.css -o src/styles/tailwind.css",
+    "build:style": "npx tailwindcss-cli@latest build src/styles/index.css -o src/styles/tailwind.css",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",

@@ -39,5 +39,12 @@ main
 
 dd
 {
+    margin-bottom: .75em;
+
     word-wrap: break-word;
+}
+
+#zmageControl svg
+{
+    fill: #91d5ff;
 }

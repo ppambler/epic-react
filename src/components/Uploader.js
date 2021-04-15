@@ -6,6 +6,7 @@ import { Upload, message, Spin } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 
 import styled from "styled-components";
+import Zmage from 'react-zmage'
 
 const { Dragger } = Upload;
 
@@ -20,7 +21,7 @@ const H1 = styled.h1`
   text-align: center;
 `;
 
-const Image = styled.img`
+const Image = styled(Zmage)`
   max-width: 30%;
 `;
 
@@ -105,11 +106,11 @@ const Component = () => {
     },
   }));
   const bindWidthChange = () => {
-    store.setWidth(ref1.current.value);
+    store.setWidth(ref1.current.value.trim());
   };
 
   const bindHeightChange = () => {
-    store.setHeight(ref2.current.value);
+    store.setHeight(ref2.current.value.trim());
   };
   return (
     <Observer>
@@ -122,7 +123,7 @@ const Component = () => {
                   <InboxOutlined />
                 </UploadIconContainer>
                 <p className="ant-upload-text">点击或拖拽上传图片</p>
-                <p className="ant-upload-hint">
+                <p className="ant-upload-hint px-2">
                   图片仅支持 .png/.gif/.jpg/.jpeg/.svg
                   图片的格式，且大小不可大于 1M
                 </p>

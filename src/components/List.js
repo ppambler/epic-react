@@ -4,8 +4,9 @@ import { useStores } from "../stores";
 import InfiniteScroll from "react-infinite-scroller";
 import { List, Spin } from "antd";
 import styled from "styled-components";
+import Zmage from 'react-zmage'
 
-const Img = styled.img`
+const Img = styled(Zmage)`
   width: 100px;
   height: 100px;
   object-fit: contain;
