@@ -4,8 +4,6 @@ import UserStore from './user.js'
 import ImageStore from './image.js'
 import HistoryStore from './history.js'
 
-console.log(AuthStore)
-console.log(UserStore)
 window.b = UserStore
 
 const context = createContext({

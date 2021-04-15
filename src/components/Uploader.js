@@ -66,7 +66,7 @@ const Component = () => {
       }
       ImageStore.upload()
         .then((serverFile) => {
-          console.log("上传成功", serverFile);
+          console.log("上传成功");
         })
         .catch((err) => {
           console.log("上传失败");
@@ -104,7 +104,6 @@ const Component = () => {
       );
     },
   }));
-  console.log("store：", store);
   const bindWidthChange = () => {
     store.setWidth(ref1.current.value);
   };

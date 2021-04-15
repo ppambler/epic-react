@@ -7,11 +7,10 @@ const Footer = styled.footer`
   font-size: 12px;
   color: #aaa;
 `
-console.log(Footer) // 一个对象
 function Component() {
   return (
     <Footer>
-      <h1>Footer</h1>
+      <h1>Image Upload</h1>
     </Footer>
   )
 }

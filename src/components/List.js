@@ -54,7 +54,6 @@ const Component = observer(() => {
   };
 
   useEffect(() => {
-    console.log(1);
     return () => {
       console.log("卸载");
       HistoryStore.reset();

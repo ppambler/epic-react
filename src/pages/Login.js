@@ -35,22 +35,20 @@ const tailLayout = {
 
 const Component = () => {
   const history = useHistory();
-  console.log(history);
   const { AuthStore } = useStores();
   const onFinish = (values) => {
-    console.log("Success:", values);
     AuthStore.setUsername(values.username);
     AuthStore.setPassword(values.password);
     AuthStore.login()
       .then((res) => {
-        console.log(res, "登录成功");
+        console.log("登录成功");
         history.push("/");
       })
       .catch((error) => console.log(error, "登录失败"));
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log("Failed：", errorInfo);
   };
 
   // 用户名校验

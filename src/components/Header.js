@@ -6,19 +6,6 @@ import { Button } from "antd";
 import { useStores } from "../stores";
 import { observer } from "mobx-react";
 import { debounce } from "../tools/index";
-// import 'alpinejs'
-
-// const Header = styled.header`
-//   display: flex;
-//   align-items: center;
-//   padding: 10px 100px;
-//   color: black;
-//   background-color: #fff;
-//   nav {
-//     font-size: 14px;
-//     font-weight: 600;
-//   }
-// `;
 
 const classMap = {
   header:
@@ -33,23 +20,12 @@ const classMap = {
   active: "text-blue-400",
 };
 
-const Logo = styled.img`
-  /* height: 30px; */
-`;
+const Logo = styled.img``;
 
-const StyledLink = styled(NavLink)`
-  /* margin-left: 30px;
-  color: black;
-  &.active {
-    color: #91d5ff;
-  } */
-`;
+const StyledLink = styled(NavLink)``;
 
-const Login = styled.div`
-  /* margin-left: auto; */
-`;
+const Login = styled.div``;
 const StyleButton = styled(Button)`
-  /* margin-left: 10px; */
   border-radius: 0.25rem;
 `;
 

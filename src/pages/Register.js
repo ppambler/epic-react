@@ -37,7 +37,7 @@ const Component = () => {
   const history = useHistory();
   const { AuthStore } = useStores();
   const onFinish = (values) => {
-    console.log("Success:", values);
+    console.log("注册成功");
     AuthStore.setUsername(values.username);
     AuthStore.setPassword(values.password);
     AuthStore.register()
