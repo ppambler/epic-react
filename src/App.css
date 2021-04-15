@@ -48,3 +48,13 @@ dd
 {
     fill: #91d5ff;
 }
+
+#hamburger
+{
+    outline-color: #91d5ff;
+}
+
+#hamburger svg
+{
+    fill: #91d5ff;
+}

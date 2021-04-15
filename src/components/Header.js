@@ -13,7 +13,7 @@ const classMap = {
   logoLink: "block",
   logoText: "sr-only",
   logoImg: "h-6 md:h-8",
-  hamburger: "inline-block md:hidden w-8 h-8 bg-gray-200 text-gray-600 p-1",
+  hamburger: "inline-block md:hidden w-8 h-8 bg-white text-blue-300 p-1",
   nav:
     "absolute md:relative top-16 left-0 md:top-0 z-20 md:flex flex-col md:flex-row md:space-x-6 font-semibold w-full md:w-auto bg-white shadow-md rounded-lg md:rounded-none md:shadow-none md:bg-transparent p-6 pt-0 md:p-0",
   link: "block py-1 text-gray-600 hover:underline",
@@ -83,7 +83,7 @@ const Component = observer(() => {
       >
         <Logo className={classMap.logoImg} src={LogoUrl} alt="" />
       </a>
-      <button className={classMap.hamburger} onClick={isHidden}>
+      <button id="hamburger" className={classMap.hamburger} onClick={isHidden}>
         <svg
           fill="currentColor"
           viewBox="0 0 20 20"
