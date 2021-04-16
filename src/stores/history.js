@@ -18,7 +18,7 @@ class HistoryStore {
 
   @action find() {
     this.isLoading = true;
-    console.log('find...')
+    // console.log('find...')
     Uploader.find({ page: this.page, limit: this.limit })
       .then((newList) => {
         this.append(newList);
@@ -46,7 +46,6 @@ class HistoryStore {
     return new Promise((resolve,reject)=>{
       Uploader.deleteItem(id)
         .then((results)=>{
-          console.log(`删除 id 为${id}的元素`)
           message.success('图片删除成功')
           resolve(results)
         })
