@@ -57,8 +57,8 @@ const Component = observer(() => {
   const deleteItem = (id) => {
     HistoryStore.delete(id).then((results) => {
       let dom = document.getElementById(`${id}`);
-      console.log(dom);
       dom.remove();
+      dom = null
     });
   };
 
@@ -105,7 +105,6 @@ const Component = observer(() => {
                 <Button
                   type="primary"
                   onClick={() => {
-                    console.log(item);
                     deleteItem(item.id);
                   }}
                 >

@@ -46,7 +46,7 @@ class HistoryStore {
     return new Promise((resolve,reject)=>{
       Uploader.deleteItem(id)
         .then((results)=>{
-          console.log(`删除id为${id}的元素`)
+          console.log(`删除 id 为${id}的元素`)
           message.success('图片删除成功')
           resolve(results)
         })
