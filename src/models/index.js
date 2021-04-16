@@ -73,6 +73,17 @@ const Uploader = {
         .catch((error) => reject(error));
     });
   },
+
+  // 删除某一张图片
+  deleteItem(id) {
+    const todo = AV.Object.createWithoutData("Image", id);
+    return new Promise((resolve, reject) => {
+      todo
+        .destroy()
+        .then((results) => resolve(results))
+        .catch((error) => reject(error));
+    });
+  },
 };
 
 export { Auth, Uploader };

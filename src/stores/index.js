@@ -16,7 +16,8 @@ const context = createContext({
 window.stores = {
   AuthStore,
   UserStore,
-  ImageStore
+  ImageStore,
+  HistoryStore
 }
 
 export const useStores = () => useContext(context) 

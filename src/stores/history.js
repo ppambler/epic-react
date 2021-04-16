@@ -41,6 +41,18 @@ class HistoryStore {
     this.hasMore = true;
     this.page = 0;
   }
+
+  @action delete(id) {
+    return new Promise((resolve,reject)=>{
+      Uploader.deleteItem(id)
+        .then((results)=>{
+          console.log(`删除id为${id}的元素`)
+          message.success('图片删除成功')
+          resolve(results)
+        })
+        .catch(error => message.error('删除元素失败'))
+    })
+  }
 }
 
 export default new HistoryStore();

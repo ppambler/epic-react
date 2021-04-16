@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import { useStores } from "../stores";
 import InfiniteScroll from "react-infinite-scroller";
-import { List, Spin } from "antd";
+import { List, Spin, Button } from "antd";
 import styled from "styled-components";
-import Zmage from 'react-zmage'
+import Zmage from "react-zmage";
 
 const Img = styled(Zmage)`
   width: 100px;
@@ -54,6 +54,14 @@ const Component = observer(() => {
     HistoryStore.find();
   };
 
+  const deleteItem = (id) => {
+    HistoryStore.delete(id).then((results) => {
+      let dom = document.getElementById(`${id}`);
+      console.log(dom);
+      dom.remove();
+    });
+  };
+
   useEffect(() => {
     return () => {
       console.log("卸载");
@@ -73,7 +81,7 @@ const Component = observer(() => {
         <List
           dataSource={HistoryStore.list}
           renderItem={(item) => (
-            <List.Item key={item.id}>
+            <List.Item key={item.id} id={`${item.id}`}>
               <div>
                 <Img
                   src={item.attributes.url.attributes.url}
@@ -93,6 +101,17 @@ const Component = observer(() => {
                   {item.attributes.url.attributes.url}
                 </a>
               </LinkContainer>
+              <div>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    console.log(item);
+                    deleteItem(item.id);
+                  }}
+                >
+                  删除记录
+                </Button>
+              </div>
             </List.Item>
           )}
         >

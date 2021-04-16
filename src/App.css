@@ -69,3 +69,8 @@ dd
 {
     top: -3px !important;
 }
+
+.ant-btn-primary
+{
+    border-radius: .25rem !important;
+}
