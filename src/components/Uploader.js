@@ -119,7 +119,7 @@ const Component = () => {
         return (
           <div>
             <Spin tip="上传中" spinning={ImageStore.isUploading}>
-              <Dragger {...props}>
+              <Dragger {...props} multiple accept="image/*" capture="camera">
                 <UploadIconContainer className="ant-upload-drag-icon">
                   <InboxOutlined />
                 </UploadIconContainer>
