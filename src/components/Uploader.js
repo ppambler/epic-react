@@ -62,8 +62,8 @@ const Component = () => {
       }
 
       // 判断图片大小
-      if (file.size > 1024 * 1024) {
-        message.error("图片最大为 1M");
+      if (file.size > 5 * 1024 * 1024) {
+        message.error("图片最大为 5M");
         return false;
       }
       ImageStore.upload()
@@ -119,14 +119,14 @@ const Component = () => {
         return (
           <div>
             <Spin tip="上传中" spinning={ImageStore.isUploading}>
-              <Dragger {...props} multiple accept="image/*">
+              <Dragger {...props} multiple accept="image/*" capture="camera">
                 <UploadIconContainer className="ant-upload-drag-icon">
                   <InboxOutlined />
                 </UploadIconContainer>
                 <p className="ant-upload-text">点击或拖拽上传图片</p>
                 <p className="ant-upload-hint px-2">
                   图片仅支持 .png/.gif/.jpg/.jpeg/.svg
-                  图片的格式，且大小不可大于 1M
+                  图片的格式，且大小不可大于 5M
                 </p>
               </Dragger>
             </Spin>
