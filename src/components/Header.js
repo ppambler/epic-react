@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LogoUrl from "../common/assets/logo.svg";
+import closeUrl from "../common/assets/close.svg";
+import openUrl from "../common/assets/open.svg";
 import { NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "antd";
@@ -13,14 +15,20 @@ const classMap = {
   logoLink: "block",
   logoText: "sr-only",
   logoImg: "h-6 md:h-8",
-  hamburger: "inline-block md:hidden w-8 h-8 rounded bg-white text-blue-300 p-1",
+  hamburger:
+    "inline-block md:hidden w-8 h-8 rounded bg-white text-blue-300 p-1",
   nav:
     "absolute md:relative top-16 left-0 md:top-0 z-20 md:flex flex-col md:flex-row md:space-x-6 font-semibold w-full md:w-auto bg-white shadow-md rounded-lg md:rounded-none md:shadow-none md:bg-transparent p-6 pt-0 md:p-0",
   link: "block py-1 text-gray-600 hover:underline",
   active: "text-blue-400",
 };
 
-const Logo = styled.img``;
+const Logo = styled.img`
+  @media (max-width: 768px) {
+    position: relative;
+    top: 3px;
+  }
+`;
 
 const StyledLink = styled(NavLink)``;
 
@@ -84,17 +92,11 @@ const Component = observer(() => {
         <Logo className={classMap.logoImg} src={LogoUrl} alt="" />
       </a>
       <button id="hamburger" className={classMap.hamburger} onClick={isHidden}>
-        <svg
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clipRule="evenodd"
-          ></path>
-        </svg>
+        {hidden ? (
+          <img src={openUrl} alt="" />
+        ) : (
+          <img src={closeUrl} alt="" />
+        )}
       </button>
       <nav className={`${classMap.nav} ${hidden ? "hidden" : ""}`}>
         <StyledLink

@@ -51,14 +51,14 @@ dd
 
 #hamburger
 {
-    border: 2px solid #91d5ff;
+    /* border: 2px solid #91d5ff; */
     outline: none;
 }
 
-#hamburger:focus
+/* #hamburger:focus
 {
     border-color: #40a9ff;
-}
+} */
 
 #hamburger svg
 {
